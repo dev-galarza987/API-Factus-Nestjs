@@ -8,9 +8,11 @@ export class UpdateCompanyDto {
     maxLength: 255,
     required: false,
   })
-  @IsString()
+  @IsString({ message: 'La razón social debe ser una cadena de texto' })
   @IsOptional()
-  @MaxLength(255)
+  @MaxLength(255, {
+    message: 'La razón social no puede exceder los 255 caracteres',
+  })
   businessName?: string;
 
   @ApiProperty({
@@ -19,9 +21,14 @@ export class UpdateCompanyDto {
     maxLength: 50,
     required: false,
   })
-  @IsString()
+  @IsString({
+    message: 'El número de identificación fiscal debe ser una cadena de texto',
+  })
   @IsOptional()
-  @MaxLength(50)
+  @MaxLength(50, {
+    message:
+      'El número de identificación fiscal no puede exceder los 50 caracteres',
+  })
   taxId?: string;
 
   @ApiProperty({
@@ -30,9 +37,11 @@ export class UpdateCompanyDto {
     maxLength: 100,
     required: false,
   })
-  @IsEmail()
+  @IsEmail({}, { message: 'Debe proporcionar un correo electrónico válido' })
   @IsOptional()
-  @MaxLength(100)
+  @MaxLength(100, {
+    message: 'El correo electrónico no puede exceder los 100 caracteres',
+  })
   email?: string;
 
   @ApiProperty({
@@ -41,8 +50,10 @@ export class UpdateCompanyDto {
     maxLength: 500,
     required: false,
   })
-  @IsString()
+  @IsString({ message: 'La dirección debe ser una cadena de texto' })
   @IsOptional()
-  @MaxLength(500)
+  @MaxLength(500, {
+    message: 'La dirección no puede exceder los 500 caracteres',
+  })
   address?: string;
 }
