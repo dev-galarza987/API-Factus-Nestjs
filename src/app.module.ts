@@ -4,6 +4,10 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CompanyModule } from './company/company.module';
+import { CustomerModule } from './customer/customer.module';
+import { InvoiceModule } from './invoice/invoice.module';
+import { InvoiceDetailModule } from './invoice-detail/invoice-detail.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -18,6 +22,10 @@ import { CompanyModule } from './company/company.module';
       synchronize: true,
     }),
     CompanyModule,
+    CustomerModule,
+    InvoiceModule,
+    InvoiceDetailModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
