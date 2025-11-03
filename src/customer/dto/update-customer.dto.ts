@@ -8,9 +8,13 @@ export class UpdateCustomerDto {
     maxLength: 255,
     required: false,
   })
-  @IsString()
+  @IsString({
+    message: 'El nombre del cliente debe ser una cadena de texto',
+  })
   @IsOptional()
-  @MaxLength(255)
+  @MaxLength(255, {
+    message: 'El nombre del cliente no puede exceder los 255 caracteres',
+  })
   name?: string;
 
   @ApiProperty({
@@ -19,9 +23,13 @@ export class UpdateCustomerDto {
     maxLength: 50,
     required: false,
   })
-  @IsString()
+  @IsString({
+    message: 'El número de identificación debe ser una cadena de texto',
+  })
   @IsOptional()
-  @MaxLength(50)
+  @MaxLength(50, {
+    message: 'El número de identificación no puede exceder los 50 caracteres',
+  })
   taxOrId?: string;
 
   @ApiProperty({
@@ -30,8 +38,10 @@ export class UpdateCustomerDto {
     maxLength: 100,
     required: false,
   })
-  @IsEmail()
+  @IsEmail({}, { message: 'Debe proporcionar un correo electrónico válido' })
   @IsOptional()
-  @MaxLength(100)
+  @MaxLength(100, {
+    message: 'El correo electrónico no puede exceder los 100 caracteres',
+  })
   email?: string;
 }
