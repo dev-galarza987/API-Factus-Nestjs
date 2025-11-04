@@ -27,14 +27,10 @@ describe('AppController (e2e)', () => {
   });
 
   it('/api/v1 (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/api/v1')
-      .expect(200);
+    return request(app.getHttpServer()).get('/api/v1').expect(200);
   });
 
   it('Should return 404 for non-existent route', () => {
-    return request(app.getHttpServer())
-      .get('/non-existent-route')
-      .expect(404);
+    return request(app.getHttpServer()).get('/non-existent-route').expect(404);
   });
 });

@@ -7,15 +7,27 @@ import { UserService } from '../src/user/user.service';
 // Mock del UserService
 const mockUserService = {
   findAll: jest.fn().mockResolvedValue([
-    { id: '1', firstName: 'Admin', lastName: 'User', email: 'admin@factus.com', role: 'ADMIN' },
-    { id: '2', firstName: 'Company', lastName: 'User', email: 'company@test.com', role: 'COMPANY' }
+    {
+      id: '1',
+      firstName: 'Admin',
+      lastName: 'User',
+      email: 'admin@factus.com',
+      role: 'ADMIN',
+    },
+    {
+      id: '2',
+      firstName: 'Company',
+      lastName: 'User',
+      email: 'company@test.com',
+      role: 'COMPANY',
+    },
   ]),
   findOne: jest.fn().mockResolvedValue({
     id: '1',
     firstName: 'Admin',
     lastName: 'User',
     email: 'admin@factus.com',
-    role: 'ADMIN'
+    role: 'ADMIN',
   }),
 };
 

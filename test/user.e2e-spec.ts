@@ -29,7 +29,9 @@ describe('User Module (e2e)', () => {
 
       expect(response.body).toHaveProperty('id');
       expect(response.body.email).toBe(TestFixtures.users.company.email);
-      expect(response.body.firstName).toBe(TestFixtures.users.company.firstName);
+      expect(response.body.firstName).toBe(
+        TestFixtures.users.company.firstName,
+      );
       expect(response.body.role).toBe(TestFixtures.users.company.role);
       expect(response.body).not.toHaveProperty('password');
       createdUserId = response.body.id;
@@ -65,7 +67,7 @@ describe('User Module (e2e)', () => {
     it('4. Should login user successfully', async () => {
       const loginData = {
         email: TestFixtures.users.company.email,
-        password: TestFixtures.users.company.password
+        password: TestFixtures.users.company.password,
       };
 
       const response = await request(app.getHttpServer())
@@ -81,7 +83,7 @@ describe('User Module (e2e)', () => {
     it('5. Should fail to login with invalid credentials', async () => {
       const loginData = {
         email: TestFixtures.users.company.email,
-        password: 'wrongpassword'
+        password: 'wrongpassword',
       };
 
       await request(app.getHttpServer())
@@ -136,7 +138,7 @@ describe('User Module (e2e)', () => {
     it('9. Should update user successfully', async () => {
       const updateData = {
         firstName: 'Updated',
-        lastName: 'Name'
+        lastName: 'Name',
       };
 
       const response = await request(app.getHttpServer())
@@ -150,7 +152,7 @@ describe('User Module (e2e)', () => {
 
     it('10. Should fail to update with invalid email', async () => {
       const updateData = {
-        email: 'invalid-email-format'
+        email: 'invalid-email-format',
       };
 
       await request(app.getHttpServer())

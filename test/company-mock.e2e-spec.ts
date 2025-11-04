@@ -10,25 +10,27 @@ const mockCompanyService = {
     id: '1',
     businessName: 'Test Company',
     taxId: '123456789',
-    email: 'test@company.com'
+    email: 'test@company.com',
   }),
   findAll: jest.fn().mockResolvedValue([
     { id: '1', businessName: 'Test Company 1' },
-    { id: '2', businessName: 'Test Company 2' }
+    { id: '2', businessName: 'Test Company 2' },
   ]),
   findOne: jest.fn().mockResolvedValue({
     id: '1',
     businessName: 'Test Company',
     taxId: '123456789',
-    email: 'test@company.com'
+    email: 'test@company.com',
   }),
   update: jest.fn().mockResolvedValue({
     id: '1',
     businessName: 'Updated Company',
     taxId: '123456789',
-    email: 'test@company.com'
+    email: 'test@company.com',
   }),
-  remove: jest.fn().mockResolvedValue({ message: 'Company deleted successfully' })
+  remove: jest
+    .fn()
+    .mockResolvedValue({ message: 'Company deleted successfully' }),
 };
 
 describe('Company Controller Tests (e2e)', () => {
@@ -61,7 +63,7 @@ describe('Company Controller Tests (e2e)', () => {
         taxId: '123456789',
         email: 'test@company.com',
         address: 'Test Address',
-        phone: '+591 70123456'
+        phone: '+591 70123456',
       };
 
       const response = await request(app.getHttpServer())

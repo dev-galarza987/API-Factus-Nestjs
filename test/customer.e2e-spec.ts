@@ -27,7 +27,9 @@ describe('Customer Module (e2e)', () => {
         .expect(201);
 
       expect(response.body).toHaveProperty('id');
-      expect(response.body.fullName).toBe(TestFixtures.customers.valid.fullName);
+      expect(response.body.fullName).toBe(
+        TestFixtures.customers.valid.fullName,
+      );
       expect(response.body.taxOrId).toBe(TestFixtures.customers.valid.taxOrId);
       expect(response.body.email).toBe(TestFixtures.customers.valid.email);
       createdCustomerId = response.body.id;
@@ -80,7 +82,9 @@ describe('Customer Module (e2e)', () => {
         .expect(200);
 
       expect(response.body.id).toBe(createdCustomerId);
-      expect(response.body.fullName).toBe(TestFixtures.customers.valid.fullName);
+      expect(response.body.fullName).toBe(
+        TestFixtures.customers.valid.fullName,
+      );
     });
 
     it('6. Should return 404 for non-existent customer', async () => {
@@ -102,7 +106,7 @@ describe('Customer Module (e2e)', () => {
     it('7. Should update customer successfully', async () => {
       const updateData = {
         fullName: 'Updated Customer Name',
-        phone: '+591 70999777'
+        phone: '+591 70999777',
       };
 
       const response = await request(app.getHttpServer())
@@ -116,7 +120,7 @@ describe('Customer Module (e2e)', () => {
 
     it('8. Should fail to update with invalid email', async () => {
       const updateData = {
-        email: 'invalid-email-format'
+        email: 'invalid-email-format',
       };
 
       await request(app.getHttpServer())

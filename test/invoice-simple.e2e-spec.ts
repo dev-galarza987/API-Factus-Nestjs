@@ -7,14 +7,14 @@ import { InvoiceService } from '../src/invoice/invoice.service';
 // Mock del InvoiceService
 const mockInvoiceService = {
   findAll: jest.fn().mockResolvedValue([
-    { id: '1', invoiceNumber: 'INV-001', totalAmount: 1130.00 },
-    { id: '2', invoiceNumber: 'INV-002', totalAmount: 2260.00 }
+    { id: '1', invoiceNumber: 'INV-001', totalAmount: 1130.0 },
+    { id: '2', invoiceNumber: 'INV-002', totalAmount: 2260.0 },
   ]),
   findOne: jest.fn().mockResolvedValue({
     id: '1',
     invoiceNumber: 'INV-001',
-    totalAmount: 1130.00,
-    status: 'PENDING'
+    totalAmount: 1130.0,
+    status: 'PENDING',
   }),
 };
 
@@ -59,7 +59,7 @@ describe('Invoice Controller Tests (e2e)', () => {
 
       expect(response.body.id).toBe('1');
       expect(response.body.invoiceNumber).toBe('INV-001');
-      expect(response.body.totalAmount).toBe(1130.00);
+      expect(response.body.totalAmount).toBe(1130.0);
       expect(mockInvoiceService.findOne).toHaveBeenCalledWith('1');
     });
 

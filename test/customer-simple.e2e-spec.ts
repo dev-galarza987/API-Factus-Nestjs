@@ -8,13 +8,13 @@ import { CustomerService } from '../src/customer/customer.service';
 const mockCustomerService = {
   findAll: jest.fn().mockResolvedValue([
     { id: '1', fullName: 'Juan Pérez', email: 'juan@test.com' },
-    { id: '2', fullName: 'María García', email: 'maria@test.com' }
+    { id: '2', fullName: 'María García', email: 'maria@test.com' },
   ]),
   findOne: jest.fn().mockResolvedValue({
     id: '1',
     fullName: 'Juan Pérez',
     taxOrId: '12345678',
-    email: 'juan@test.com'
+    email: 'juan@test.com',
   }),
 };
 

@@ -18,7 +18,7 @@ describe('Payment Module (e2e)', () => {
 
   beforeEach(async () => {
     await TestHelper.cleanDatabase();
-    
+
     // Create necessary dependencies
     const companyResponse = await request(app.getHttpServer())
       .post('/api/v1/company')
@@ -33,9 +33,9 @@ describe('Payment Module (e2e)', () => {
       .send({
         ...TestFixtures.invoices.valid,
         companyId: companyResponse.body.id,
-        customerId: customerResponse.body.id
+        customerId: customerResponse.body.id,
       });
-    
+
     invoiceId = invoiceResponse.body.id;
   });
 
@@ -43,7 +43,7 @@ describe('Payment Module (e2e)', () => {
     it('1. Should create a new payment successfully', async () => {
       const paymentData = {
         ...TestFixtures.payments.valid,
-        invoiceId
+        invoiceId,
       };
 
       const response = await request(app.getHttpServer())
@@ -53,7 +53,9 @@ describe('Payment Module (e2e)', () => {
 
       expect(response.body).toHaveProperty('id');
       expect(response.body.amount).toBe(TestFixtures.payments.valid.amount);
-      expect(response.body.paymentMethod).toBe(TestFixtures.payments.valid.paymentMethod);
+      expect(response.body.paymentMethod).toBe(
+        TestFixtures.payments.valid.paymentMethod,
+      );
       expect(response.body.invoiceId).toBe(invoiceId);
       createdPaymentId = response.body.id;
     });
@@ -61,7 +63,7 @@ describe('Payment Module (e2e)', () => {
     it('2. Should fail to create payment with invalid data', async () => {
       const paymentData = {
         amount: -100, // Invalid negative amount
-        invoiceId
+        invoiceId,
       };
 
       await request(app.getHttpServer())
@@ -73,7 +75,7 @@ describe('Payment Module (e2e)', () => {
     it('3. Should fail to create payment with non-existent invoice', async () => {
       const paymentData = {
         ...TestFixtures.payments.valid,
-        invoiceId: '550e8400-e29b-41d4-a716-446655440000'
+        invoiceId: '550e8400-e29b-41d4-a716-446655440000',
       };
 
       await request(app.getHttpServer())
@@ -87,7 +89,7 @@ describe('Payment Module (e2e)', () => {
     beforeEach(async () => {
       const paymentData = {
         ...TestFixtures.payments.valid,
-        invoiceId
+        invoiceId,
       };
 
       const response = await request(app.getHttpServer())
@@ -126,7 +128,7 @@ describe('Payment Module (e2e)', () => {
     beforeEach(async () => {
       const paymentData = {
         ...TestFixtures.payments.valid,
-        invoiceId
+        invoiceId,
       };
 
       const response = await request(app.getHttpServer())
@@ -137,8 +139,8 @@ describe('Payment Module (e2e)', () => {
 
     it('7. Should update payment successfully', async () => {
       const updateData = {
-        amount: 250.00,
-        description: 'Updated payment description'
+        amount: 250.0,
+        description: 'Updated payment description',
       };
 
       const response = await request(app.getHttpServer())
@@ -152,7 +154,7 @@ describe('Payment Module (e2e)', () => {
 
     it('8. Should fail to update with invalid amount', async () => {
       const updateData = {
-        amount: -50
+        amount: -50,
       };
 
       await request(app.getHttpServer())
@@ -166,7 +168,7 @@ describe('Payment Module (e2e)', () => {
     beforeEach(async () => {
       const paymentData = {
         ...TestFixtures.payments.valid,
-        invoiceId
+        invoiceId,
       };
 
       const response = await request(app.getHttpServer())

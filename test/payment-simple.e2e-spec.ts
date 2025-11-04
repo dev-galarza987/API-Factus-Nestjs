@@ -7,14 +7,14 @@ import { PaymentService } from '../src/payment/payment.service';
 // Mock del PaymentService
 const mockPaymentService = {
   findAll: jest.fn().mockResolvedValue([
-    { id: '1', amount: 500.00, paymentMethod: 'CREDIT_CARD' },
-    { id: '2', amount: 1130.00, paymentMethod: 'BANK_TRANSFER' }
+    { id: '1', amount: 500.0, paymentMethod: 'CREDIT_CARD' },
+    { id: '2', amount: 1130.0, paymentMethod: 'BANK_TRANSFER' },
   ]),
   findOne: jest.fn().mockResolvedValue({
     id: '1',
-    amount: 500.00,
+    amount: 500.0,
     paymentMethod: 'CREDIT_CARD',
-    transactionReference: 'TXN-001'
+    transactionReference: 'TXN-001',
   }),
 };
 
@@ -58,7 +58,7 @@ describe('Payment Controller Tests (e2e)', () => {
         .expect(200);
 
       expect(response.body.id).toBe('1');
-      expect(response.body.amount).toBe(500.00);
+      expect(response.body.amount).toBe(500.0);
       expect(response.body.paymentMethod).toBe('CREDIT_CARD');
       expect(mockPaymentService.findOne).toHaveBeenCalledWith('1');
     });

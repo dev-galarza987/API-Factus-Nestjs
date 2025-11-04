@@ -27,7 +27,9 @@ describe('Company Module (e2e)', () => {
         .expect(201);
 
       expect(response.body).toHaveProperty('id');
-      expect(response.body.businessName).toBe(TestFixtures.companies.valid.businessName);
+      expect(response.body.businessName).toBe(
+        TestFixtures.companies.valid.businessName,
+      );
       expect(response.body.taxId).toBe(TestFixtures.companies.valid.taxId);
       expect(response.body.email).toBe(TestFixtures.companies.valid.email);
       createdCompanyId = response.body.id;
@@ -80,7 +82,9 @@ describe('Company Module (e2e)', () => {
         .expect(200);
 
       expect(response.body.id).toBe(createdCompanyId);
-      expect(response.body.businessName).toBe(TestFixtures.companies.valid.businessName);
+      expect(response.body.businessName).toBe(
+        TestFixtures.companies.valid.businessName,
+      );
     });
 
     it('6. Should return 404 for non-existent company', async () => {
@@ -102,7 +106,7 @@ describe('Company Module (e2e)', () => {
     it('7. Should update company successfully', async () => {
       const updateData = {
         businessName: 'Updated Company Name',
-        phone: '+591 70999888'
+        phone: '+591 70999888',
       };
 
       const response = await request(app.getHttpServer())
@@ -116,7 +120,7 @@ describe('Company Module (e2e)', () => {
 
     it('8. Should fail to update with invalid email', async () => {
       const updateData = {
-        email: 'invalid-email-format'
+        email: 'invalid-email-format',
       };
 
       await request(app.getHttpServer())

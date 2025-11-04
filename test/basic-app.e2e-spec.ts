@@ -22,22 +22,16 @@ describe('Basic App Tests (e2e)', () => {
   });
 
   it('1. Should return Hello World from root endpoint', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(302); // Expecting redirect instead of 200
+    return request(app.getHttpServer()).get('/').expect(302); // Expecting redirect instead of 200
   });
 
   it('2. Should return 404 for non-existent route', () => {
-    return request(app.getHttpServer())
-      .get('/non-existent-route')
-      .expect(404);
+    return request(app.getHttpServer()).get('/non-existent-route').expect(404);
   });
 
   it('3. Should handle redirect properly', async () => {
-    const response = await request(app.getHttpServer())
-      .get('/')
-      .expect(302);
-    
+    const response = await request(app.getHttpServer()).get('/').expect(302);
+
     expect(response.status).toBe(302);
   });
 });

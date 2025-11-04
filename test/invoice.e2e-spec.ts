@@ -19,7 +19,7 @@ describe('Invoice Module (e2e)', () => {
 
   beforeEach(async () => {
     await TestHelper.cleanDatabase();
-    
+
     // Create necessary dependencies
     const companyResponse = await request(app.getHttpServer())
       .post('/api/v1/company')
@@ -37,7 +37,7 @@ describe('Invoice Module (e2e)', () => {
       const invoiceData = {
         ...TestFixtures.invoices.valid,
         companyId,
-        customerId
+        customerId,
       };
 
       const response = await request(app.getHttpServer())
@@ -46,8 +46,12 @@ describe('Invoice Module (e2e)', () => {
         .expect(201);
 
       expect(response.body).toHaveProperty('id');
-      expect(response.body.invoiceNumber).toBe(TestFixtures.invoices.valid.invoiceNumber);
-      expect(response.body.totalAmount).toBe(TestFixtures.invoices.valid.totalAmount);
+      expect(response.body.invoiceNumber).toBe(
+        TestFixtures.invoices.valid.invoiceNumber,
+      );
+      expect(response.body.totalAmount).toBe(
+        TestFixtures.invoices.valid.totalAmount,
+      );
       expect(response.body.companyId).toBe(companyId);
       expect(response.body.customerId).toBe(customerId);
       createdInvoiceId = response.body.id;
@@ -57,7 +61,7 @@ describe('Invoice Module (e2e)', () => {
       const invoiceData = {
         ...TestFixtures.invoices.valid,
         companyId: '550e8400-e29b-41d4-a716-446655440000',
-        customerId
+        customerId,
       };
 
       await request(app.getHttpServer())
@@ -70,7 +74,7 @@ describe('Invoice Module (e2e)', () => {
       const invoiceData = {
         invoiceNumber: '', // Invalid empty number
         companyId,
-        customerId
+        customerId,
       };
 
       await request(app.getHttpServer())
@@ -85,7 +89,7 @@ describe('Invoice Module (e2e)', () => {
       const invoiceData = {
         ...TestFixtures.invoices.valid,
         companyId,
-        customerId
+        customerId,
       };
 
       const response = await request(app.getHttpServer())
@@ -96,7 +100,7 @@ describe('Invoice Module (e2e)', () => {
       const anotherInvoiceData = {
         ...TestFixtures.invoices.another,
         companyId,
-        customerId
+        customerId,
       };
 
       await request(app.getHttpServer())
@@ -119,7 +123,9 @@ describe('Invoice Module (e2e)', () => {
         .expect(200);
 
       expect(response.body.id).toBe(createdInvoiceId);
-      expect(response.body.invoiceNumber).toBe(TestFixtures.invoices.valid.invoiceNumber);
+      expect(response.body.invoiceNumber).toBe(
+        TestFixtures.invoices.valid.invoiceNumber,
+      );
     });
 
     it('6. Should return 404 for non-existent invoice', async () => {
@@ -135,7 +141,7 @@ describe('Invoice Module (e2e)', () => {
       const invoiceData = {
         ...TestFixtures.invoices.valid,
         companyId,
-        customerId
+        customerId,
       };
 
       const response = await request(app.getHttpServer())
@@ -147,7 +153,7 @@ describe('Invoice Module (e2e)', () => {
     it('7. Should update invoice successfully', async () => {
       const updateData = {
         notes: 'Updated invoice notes',
-        subtotal: 2000.00
+        subtotal: 2000.0,
       };
 
       const response = await request(app.getHttpServer())
@@ -161,7 +167,7 @@ describe('Invoice Module (e2e)', () => {
 
     it('8. Should fail to update with invalid amount', async () => {
       const updateData = {
-        totalAmount: -100
+        totalAmount: -100,
       };
 
       await request(app.getHttpServer())
@@ -176,7 +182,7 @@ describe('Invoice Module (e2e)', () => {
       const invoiceData = {
         ...TestFixtures.invoices.valid,
         companyId,
-        customerId
+        customerId,
       };
 
       const response = await request(app.getHttpServer())
