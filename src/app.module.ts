@@ -11,6 +11,7 @@ import { PaymentModule } from './payment/payment.module';
 import { HomeModule } from './home/home.module';
 import { ApiModule } from './api/api.module';
 import { UserModule } from './user/user.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { UserModule } from './user/user.module';
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
+    DatabaseModule,
     HomeModule,
     ApiModule,
     CompanyModule,

@@ -25,6 +25,17 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## 🔐 Usuario Administrador
+
+El sistema crea automáticamente un usuario administrador al iniciar:
+
+```
+📧 Email:    admin@factus.com
+🔑 Password: galarza987#
+```
+
+Ver más detalles en [ADMIN_USER.md](./ADMIN_USER.md)
+
 ## Project setup
 
 ```bash

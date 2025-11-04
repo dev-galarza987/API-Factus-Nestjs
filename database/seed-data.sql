@@ -9,6 +9,22 @@
 -- DELETE FROM invoice;
 -- DELETE FROM customer;
 -- DELETE FROM company;
+-- DELETE FROM user;
+
+-- ==========================================
+-- 0. INSERTAR USUARIO ADMINISTRADOR (USER)
+-- ==========================================
+
+INSERT INTO "user" (id, email, password, role, "isActive", "createdAt", "updatedAt") VALUES
+(
+  '00000000-0000-0000-0000-000000000001',
+  'admin@factus.com',
+  '$2b$10$JoQSHqAT0FibPRzgikJ2/etf6N1byKLUVpjXmWR2rxLhA2sBd9qp2',
+  'COMPANY',
+  true,
+  NOW(),
+  NOW()
+);
 
 -- ==========================================
 -- 1. INSERTAR EMPRESAS (COMPANY)
