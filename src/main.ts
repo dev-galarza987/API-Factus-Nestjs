@@ -50,7 +50,8 @@ async function bootstrap() {
       'dev.galarza987@gmail.com',
     )
     .setLicense('MIT', 'https://opensource.org/licenses/MIT')
-    .addServer('http://127.0.0.1:4500', 'Servidor de desarrollo')
+    .addServer(`http://127.0.0.1:${PORT}`, 'Servidor de desarrollo')
+    .addServer(`http://localhost:${PORT}`, 'Servidor local alternativo')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
@@ -64,13 +65,42 @@ async function bootstrap() {
   });
 
   app.use(morgan('dev'));
-  app.enableCors();
+  
+  // Configuración específica de CORS
+  const corsOrigins = process.env.CORS_ORIGINS 
+    ? process.env.CORS_ORIGINS.split(',')
+    : [
+        'http://localhost:3000',
+        'http://127.0.0.1:3000',
+        'http://localhost:4500',
+        'http://127.0.0.1:4500',
+        `http://localhost:${PORT}`,
+        `http://127.0.0.1:${PORT}`,
+      ];
+
+  app.enableCors({
+    origin: corsOrigins,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: [
+      'Origin',
+      'X-Requested-With',
+      'Content-Type',
+      'Accept',
+      'Authorization',
+      'Access-Control-Allow-Origin',
+      'Access-Control-Allow-Methods',
+      'Access-Control-Allow-Headers',
+    ],
+    credentials: true,
+    optionsSuccessStatus: 200, // Para navegadores antiguos
+  });
 
   await app.listen(PORT, () => {
     console.log(`Server listening on http://127.0.0.1:${PORT}`);
     console.log(`Home page: http://127.0.0.1:${PORT}/home`);
     console.log(`API endpoints: http://127.0.0.1:${PORT}/api/v1`);
     console.log(`Swagger docs: http://127.0.0.1:${PORT}/api/v1/docs`);
+    console.log(`CORS enabled for origins: ${corsOrigins.join(', ')}`);
   });
 }
 void bootstrap();
