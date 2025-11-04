@@ -1,11 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
-import { App } from 'supertest/types';
+import request from 'supertest';
 import { AppModule } from './../src/app.module';
 
 describe('AppController (e2e)', () => {
-  let app: INestApplication<App>;
+  let app: INestApplication;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -16,10 +15,26 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
+  afterEach(async () => {
+    await app.close();
+  });
+
   it('/ (GET)', () => {
     return request(app.getHttpServer())
       .get('/')
       .expect(200)
       .expect('Hello World!');
+  });
+
+  it('/api/v1 (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/api/v1')
+      .expect(200);
+  });
+
+  it('Should return 404 for non-existent route', () => {
+    return request(app.getHttpServer())
+      .get('/non-existent-route')
+      .expect(404);
   });
 });
