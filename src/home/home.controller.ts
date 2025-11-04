@@ -556,6 +556,103 @@ export class HomeController {
             },
           ],
         },
+        {
+          name: 'User',
+          description: 'Gestión de usuarios y autenticación',
+          icon: '👤',
+          endpoints: [
+            {
+              method: 'POST',
+              path: '/api/v1/user/register',
+              description: 'Registrar nuevo usuario',
+            },
+            {
+              method: 'POST',
+              path: '/api/v1/user/auth/login',
+              description: 'Iniciar sesión',
+            },
+            {
+              method: 'GET',
+              path: '/api/v1/user',
+              description: 'Obtener todos los usuarios',
+            },
+            {
+              method: 'GET',
+              path: '/api/v1/user/paginated',
+              description: 'Obtener usuarios paginados',
+            },
+            {
+              method: 'GET',
+              path: '/api/v1/user/active',
+              description: 'Obtener usuarios activos',
+            },
+            {
+              method: 'GET',
+              path: '/api/v1/user/role/:role',
+              description: 'Obtener usuarios por rol',
+            },
+            {
+              method: 'GET',
+              path: '/api/v1/user/with-company',
+              description: 'Usuarios con empresa asociada',
+            },
+            {
+              method: 'GET',
+              path: '/api/v1/user/with-customer',
+              description: 'Usuarios con cliente asociado',
+            },
+            {
+              method: 'GET',
+              path: '/api/v1/user/latest',
+              description: 'Últimos usuarios registrados',
+            },
+            {
+              method: 'GET',
+              path: '/api/v1/user/:id',
+              description: 'Obtener usuario por ID',
+            },
+            {
+              method: 'PATCH',
+              path: '/api/v1/user/:id',
+              description: 'Actualizar usuario',
+            },
+            {
+              method: 'DELETE',
+              path: '/api/v1/user/:id',
+              description: 'Desactivar usuario',
+            },
+            {
+              method: 'GET',
+              path: '/api/v1/user/email/:email/exists',
+              description: 'Verificar si email existe',
+            },
+            {
+              method: 'GET',
+              path: '/api/v1/user/:id/is-active',
+              description: 'Verificar si usuario está activo',
+            },
+            {
+              method: 'GET',
+              path: '/api/v1/user/stats/total',
+              description: 'Contar total de usuarios',
+            },
+            {
+              method: 'GET',
+              path: '/api/v1/user/stats/active',
+              description: 'Contar usuarios activos',
+            },
+            {
+              method: 'GET',
+              path: '/api/v1/user/stats/role/:role',
+              description: 'Contar usuarios por rol',
+            },
+            {
+              method: 'GET',
+              path: '/api/v1/user/stats/general',
+              description: 'Estadísticas generales',
+            },
+          ],
+        },
       ],
       technologies: [
         {
@@ -581,13 +678,13 @@ export class HomeController {
       ],
       features: [
         'API REST completa con arquitectura modular',
-        'Autenticación y autorización JWT (próximamente)',
+        'Autenticación de usuarios (COMPANY/CUSTOMER)',
         'Documentación Swagger/OpenAPI interactiva',
         'Validación de datos con class-validator',
         'Relaciones complejas entre entidades',
         'Estadísticas y reportes avanzados',
         'Paginación y filtros en todas las consultas',
-        'Logging con Morgan',
+        'Seguridad con bcrypt para contraseñas',
         'CORS habilitado',
         'Variables de entorno con dotenv',
       ],

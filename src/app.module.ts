@@ -10,6 +10,7 @@ import { InvoiceDetailModule } from './invoice-detail/invoice-detail.module';
 import { PaymentModule } from './payment/payment.module';
 import { HomeModule } from './home/home.module';
 import { ApiModule } from './api/api.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { ApiModule } from './api/api.module';
     InvoiceModule,
     InvoiceDetailModule,
     PaymentModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

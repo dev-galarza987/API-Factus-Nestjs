@@ -37,6 +37,7 @@ async function bootstrap() {
       'Sistema completo de facturación con gestión de empresas, clientes, facturas, detalles y pagos',
     )
     .setVersion('1.0.0')
+    .addTag('User', 'Gestión de usuarios y autenticación')
     .addTag('Company', 'Gestión de empresas')
     .addTag('Customer', 'Gestión de clientes')
     .addTag('Invoice', 'Gestión de facturas')
