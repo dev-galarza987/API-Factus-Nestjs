@@ -17,7 +17,7 @@ export class TestHelper {
     }).compile();
 
     this.app = moduleFixture.createNestApplication();
-    
+
     // Configurar CORS para tests
     this.app.enableCors({
       origin: true,
@@ -31,7 +31,7 @@ export class TestHelper {
 
     await this.app.init();
     this.dataSource = this.app.get(DataSource);
-    
+
     return this.app;
   }
 
@@ -39,15 +39,15 @@ export class TestHelper {
     if (!this.dataSource) return;
 
     const entities = this.dataSource.entityMetadatas;
-    
+
     // Desactivar las restricciones de clave foránea temporalmente (PostgreSQL)
     await this.dataSource.query('SET session_replication_role = replica;');
-    
+
     for (const entity of entities) {
       const repository = this.dataSource.getRepository(entity.name);
       await repository.query(`TRUNCATE TABLE "${entity.tableName}" CASCADE;`);
     }
-    
+
     // Reactivar las restricciones de clave foránea
     await this.dataSource.query('SET session_replication_role = DEFAULT;');
   }

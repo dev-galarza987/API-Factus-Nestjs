@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 
 export class SimpleTestHelper {
-  
   /**
    * Inicializa una aplicación de test básica sin base de datos
    */
