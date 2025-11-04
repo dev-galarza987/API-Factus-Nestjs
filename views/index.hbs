@@ -1,0 +1,116 @@
+<div class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h2 class="hero-title">{{title}}</h2>
+      <p class="hero-description">{{description}}</p>
+      <div class="hero-buttons">
+        <a href="#modules" class="btn btn-primary">Ver Módulos</a>
+        <a href="/api/v1/docs" class="btn btn-secondary" target="_blank">Documentación Swagger</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="about">
+  <div class="container">
+    <h2 class="section-title">Acerca del Sistema</h2>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <h3>Alto Rendimiento</h3>
+        <p>Construido con NestJS para garantizar escalabilidad y rendimiento óptimo.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <h3>Seguro</h3>
+        <p>Validación robusta de datos y preparado para autenticación JWT.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Completo</h3>
+        <p>Gestión completa de facturas, clientes, empresas, detalles y pagos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-gray" id="features">
+  <div class="container">
+    <h2 class="section-title">Características Principales</h2>
+    <div class="grid-2">
+      {{#each features}}
+      <div class="feature-item">
+        <span class="feature-check">✓</span>
+        <span>{{this}}</span>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="modules">
+  <div class="container">
+    <h2 class="section-title">Módulos del Sistema</h2>
+    <p class="section-description">La API está organizada en 5 módulos principales con endpoints especializados</p>
+    
+    {{#each modules}}
+    <div class="module-card">
+      <div class="module-header">
+        <div class="module-info">
+          <span class="module-icon">{{this.icon}}</span>
+          <h3 class="module-title">{{this.name}}</h3>
+        </div>
+        <span class="badge">{{this.endpoints.length}} endpoints</span>
+      </div>
+      <p class="module-description">{{this.description}}</p>
+      
+      <div class="endpoints-table-wrapper">
+        <table class="endpoints-table">
+          <thead>
+            <tr>
+              <th>Método</th>
+              <th>Endpoint</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each this.endpoints}}
+            <tr>
+              <td><span class="method method-{{this.method}}">{{this.method}}</span></td>
+              <td><code class="endpoint-path">{{this.path}}</code></td>
+              <td>{{this.description}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</section>
+
+<section class="section section-gray" id="technologies">
+  <div class="container">
+    <h2 class="section-title">Stack Tecnológico</h2>
+    <div class="grid-4">
+      {{#each technologies}}
+      <div class="tech-card">
+        <h3>{{this.name}}</h3>
+        <span class="tech-version">{{this.version}}</span>
+        <p>{{this.description}}</p>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <div class="container">
+    <h2>¿Listo para comenzar?</h2>
+    <p>Explora la documentación completa de la API y comienza a integrar API-Factus en tus proyectos.</p>
+    <div class="cta-buttons">
+      <a href="/api/v1/docs" class="btn btn-primary btn-lg" target="_blank">Documentación Swagger</a>
+      <a href="https://github.com/dev-galarza987/API-Factus-Nestjs" target="_blank" class="btn btn-secondary btn-lg">Ver en GitHub</a>
+    </div>
+  </div>
+</section>

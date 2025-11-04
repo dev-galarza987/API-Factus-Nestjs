@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} - Sistema de Facturación</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <h1>📊 {{title}}</h1>
+          <span class="version">v{{version}}</span>
+        </div>
+        <nav class="nav">
+          <a href="/" class="nav-link active">Inicio</a>
+          <a href="/api/v1/docs" class="nav-link">API</a>
+          <a href="https://github.com/dev-galarza987/API-Factus-Nestjs" target="_blank" class="nav-link">GitHub</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    {{{body}}}
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>API-Factus</h3>
+          <p>Sistema profesional de facturación construido con tecnologías modernas.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Enlaces Rápidos</h3>
+          <ul>
+            <li><a href="/api/v1">Documentación API</a></li>
+            <li><a href="https://github.com/dev-galarza987" target="_blank">GitHub</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Tecnologías</h3>
+          <ul>
+            <li>NestJS Framework</li>
+            <li>PostgreSQL Database</li>
+            <li>TypeORM</li>
+            <li>TypeScript</li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contacto</h3>
+          <p>📧 dev.galarza@gmail.com</p>
+          <p>🌐 <a href="https://github.com/dev-galarza987" target="_blank">GitHub Profile</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 API-Factus. Desarrollado por <a href="https://github.com/dev-galarza987" target="_blank">Galarza</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
