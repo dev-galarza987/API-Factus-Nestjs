@@ -65,11 +65,12 @@ async function bootstrap() {
   });
 
   app.use(morgan('dev'));
-  
+
   // Configuración específica de CORS - Permite acceso desde cualquier IP en la red
-  const corsOrigins = process.env.NODE_ENV === 'production' && process.env.CORS_ORIGINS 
-    ? process.env.CORS_ORIGINS.split(',')
-    : true; // Permite cualquier origen para desarrollo
+  const corsOrigins =
+    process.env.NODE_ENV === 'production' && process.env.CORS_ORIGINS
+      ? process.env.CORS_ORIGINS.split(',')
+      : true; // Permite cualquier origen para desarrollo
 
   app.enableCors({
     origin: corsOrigins,
@@ -91,15 +92,19 @@ async function bootstrap() {
   await app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server listening on all interfaces (0.0.0.0:${PORT})`);
     console.log(`Local access: http://127.0.0.1:${PORT}`);
-    console.log(`Network access: http://[YOUR-LOCAL-IP]:${PORT}`);
+    console.log(`Network access: http://${process.env.IP_ADDRESS}:${PORT}`);
     console.log(`Home page: http://127.0.0.1:${PORT}/home`);
     console.log(`API endpoints: http://127.0.0.1:${PORT}/api/v1`);
     console.log(`Swagger docs: http://127.0.0.1:${PORT}/api/v1/docs`);
-    console.log(`CORS enabled for: ${corsOrigins === true ? 'ALL ORIGINS (desarrollo)' : corsOrigins.join(', ')}`);
+    console.log(
+      `CORS enabled for: ${corsOrigins === true ? 'ALL ORIGINS (desarrollo)' : corsOrigins.join(', ')}`,
+    );
     console.log(`\n🌐 Para acceder desde otra PC en la red:`);
-    console.log(`1. Encuentra tu IP local con: ipconfig (Windows) o ip addr (Linux)`);
-    console.log(`2. Usa: http://[TU-IP-LOCAL]:${PORT}`);
-    console.log(`3. Ejemplo: http://192.168.1.100:${PORT}`);
+    console.log(
+      `1. Encuentra tu IP local con: ipconfig (Windows) o ip addr (Linux)`,
+    );
+    console.log(`2. Usa: http://${process.env.IP_ADDRESS}:${PORT}`);
+    console.log(`3. Ejemplo: http://${process.env.IP_ADDRESS}:${PORT}`);
   });
 }
 void bootstrap();

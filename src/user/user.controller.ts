@@ -162,7 +162,7 @@ export class UserController {
     return this.userService.findOne(id);
   }
 
-  @Patch(':id')
+  @Patch(':id/update')
   @ApiOperation({ summary: 'Actualizar un usuario' })
   @ApiParam({
     name: 'id',
@@ -188,7 +188,7 @@ export class UserController {
     return this.userService.update(id, updateUserDto);
   }
 
-  @Delete(':id')
+  @Delete(':id/delete')
   @ApiOperation({ summary: 'Desactivar un usuario' })
   @ApiParam({
     name: 'id',
