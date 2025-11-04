@@ -57,10 +57,18 @@ export class Invoice {
   })
   status: StateInvoice;
 
-  @ManyToOne(() => Company, (company) => company.invoices, { eager: true })
+  @ManyToOne(() => Company, (company) => company.invoices, {
+    eager: true,
+    nullable: true,
+    onDelete: 'SET NULL',
+  })
   company: Company;
 
-  @ManyToOne(() => Customer, (customer) => customer.invoices, { eager: true })
+  @ManyToOne(() => Customer, (customer) => customer.invoices, {
+    eager: true,
+    nullable: true,
+    onDelete: 'SET NULL',
+  })
   customer: Customer;
 
   @OneToMany(() => InvoiceDetail, (detail) => detail.invoice, {

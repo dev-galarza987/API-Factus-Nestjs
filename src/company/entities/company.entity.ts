@@ -54,7 +54,10 @@ export class Company {
   })
   address: string;
 
-  @OneToOne(() => User, (user) => user.company, { nullable: true })
+  @OneToOne(() => User, (user) => user.company, {
+    nullable: true,
+    onDelete: 'SET NULL',
+  })
   @JoinColumn({ name: 'userId' })
   user?: User;
 

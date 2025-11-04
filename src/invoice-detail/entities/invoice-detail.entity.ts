@@ -48,6 +48,9 @@ export class InvoiceDetail {
   })
   subtotal: number;
 
-  @ManyToOne(() => Invoice, (invoice) => invoice.details)
+  @ManyToOne(() => Invoice, (invoice) => invoice.details, {
+    nullable: true,
+    onDelete: 'SET NULL',
+  })
   invoice: Invoice;
 }

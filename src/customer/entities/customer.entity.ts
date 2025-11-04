@@ -45,7 +45,10 @@ export class Customer {
   })
   email: string;
 
-  @OneToOne(() => User, (user) => user.customer, { nullable: true })
+  @OneToOne(() => User, (user) => user.customer, {
+    nullable: true,
+    onDelete: 'SET NULL',
+  })
   @JoinColumn({ name: 'userId' })
   user?: User;
 

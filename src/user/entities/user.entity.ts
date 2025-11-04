@@ -69,9 +69,15 @@ export class User {
   })
   updatedAt: Date;
 
-  @OneToOne(() => Company, (company) => company.user, { nullable: true })
+  @OneToOne(() => Company, (company) => company.user, {
+    nullable: true,
+    onDelete: 'SET NULL',
+  })
   company?: Company;
 
-  @OneToOne(() => Customer, (customer) => customer.user, { nullable: true })
+  @OneToOne(() => Customer, (customer) => customer.user, {
+    nullable: true,
+    onDelete: 'SET NULL',
+  })
   customer?: Customer;
 }

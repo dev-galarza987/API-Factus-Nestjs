@@ -42,6 +42,9 @@ export class Payment {
   })
   date: Date;
 
-  @ManyToOne(() => Invoice, (invoice) => invoice.payments)
+  @ManyToOne(() => Invoice, (invoice) => invoice.payments, {
+    nullable: true,
+    onDelete: 'SET NULL',
+  })
   invoice: Invoice;
 }
