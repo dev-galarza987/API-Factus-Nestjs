@@ -1,5 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
 import { Invoice } from 'src/invoice/entities/invoice.entity';
+import { User } from 'src/user/entities/user.entity';
 
 @Entity()
 export class Company {
@@ -45,6 +53,10 @@ export class Company {
     comment: 'Dirección física de la empresa',
   })
   address: string;
+
+  @OneToOne(() => User, (user) => user.company, { nullable: true })
+  @JoinColumn({ name: 'userId' })
+  user?: User;
 
   @OneToMany(() => Invoice, (invoice) => invoice.company)
   invoices: Invoice[]; // Relación uno a muchos con la entidad Invoice

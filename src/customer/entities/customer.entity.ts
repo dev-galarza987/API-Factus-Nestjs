@@ -1,5 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
 import { Invoice } from 'src/invoice/entities/invoice.entity';
+import { User } from 'src/user/entities/user.entity';
 
 @Entity()
 export class Customer {
@@ -36,6 +44,10 @@ export class Customer {
     comment: 'Correo electrónico del cliente',
   })
   email: string;
+
+  @OneToOne(() => User, (user) => user.customer, { nullable: true })
+  @JoinColumn({ name: 'userId' })
+  user?: User;
 
   @OneToMany(() => Invoice, (invoice) => invoice.customer)
   invoices: Invoice[];
