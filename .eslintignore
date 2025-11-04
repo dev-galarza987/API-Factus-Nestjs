@@ -1,0 +1,9 @@
+# Ignorar archivos JavaScript en carpeta public
+public/**/*.js
+
+# Ignorar archivos de build
+dist/
+node_modules/
+
+# Ignorar archivos de configuración
+*.config.js
