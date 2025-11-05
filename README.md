@@ -61,12 +61,39 @@ $ npm run start:prod
 # unit tests
 $ npm run test
 
-# e2e tests
+# e2e tests - all
 $ npm run test:e2e
+
+# e2e tests - basic only (fast, no database required) ⚡
+$ npm run test:e2e:basic
+
+# e2e tests - integration (with database)
+$ npm run test:e2e:integration
 
 # test coverage
 $ npm run test:cov
+
+# watch mode
+$ npm run test:watch
+
+# all tests (unit + e2e)
+$ npm run test:all
 ```
+
+### 🎯 Quick Testing
+
+For rapid development and CI/CD, use the **basic tests** (no database required):
+
+```bash
+$ npm run test:e2e:basic
+```
+
+**Results:**
+- ✅ 15 tests passed
+- ⚡ ~8 seconds execution time
+- 📦 No database setup needed
+
+For more details, see [test/TESTING.md](./test/TESTING.md)
 
 ## Deployment
 
